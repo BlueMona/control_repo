@@ -10,6 +10,7 @@ node 'master.puppet.vm' {
   file { '/root/README': 
     ensure => file, 
     content => "Welcome to ${fqdn}\n",
+    owner => 'root',
     }
 }
 node 'minetest.puppet.vm' {
@@ -19,7 +20,6 @@ node 'minetest.puppet.vm' {
 node /^web/ {
   include role::app_server
 }
-
 
 node /^db/ {
   include role::db_server
