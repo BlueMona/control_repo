@@ -18,4 +18,5 @@ class minecraft {
     ensure => running, 
     enable => true,
   }
+  include profile::java
 }
