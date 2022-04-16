@@ -6,7 +6,7 @@ class minecraft {
     ensure => file,
     source => 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar',
   } 
-  java::adoptium { 'jdk17' :
+  package java::adoptium { 'jdk17' :
     ensure  => 'present',
     version_major => '17',
     version_minor => '0',
