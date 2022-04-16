@@ -6,12 +6,13 @@ class minecraft {
     ensure => file,
     source => 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar',
   } 
-  package java::adoptium { 'jdk17' :
-    ensure  => 'present',
-    version_major => '17',
-    version_minor => '0',
-    version_patch => '2',
-    version_build => '1',
+  package { java::adoptium { 'jdk17' :
+      ensure  => 'present',
+      version_major => '17',
+      version_minor => '0',
+      version_patch => '2',
+      version_build => '1',
+    }
   }
   file {'/opt/minecraft/eula.txt':
     ensure => file, 
