@@ -6,6 +6,7 @@ class minecraft {
       version_minor => '0',
       version_patch => '2',
       version_build => '8',
+      basedir => '/custom/java',
   }
   file {'/opt/minecraft': 
     ensure => directory, 
