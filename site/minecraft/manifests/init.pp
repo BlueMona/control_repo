@@ -6,6 +6,7 @@ class minecraft {
   file {'/opt/minecraft/minecraft_server.jar':
     ensure => file,
     source => 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar',
+    before => Service['minecraft'],
   } 
   file {'/opt/minecraft/eula.txt':
     ensure => file, 
@@ -13,12 +14,11 @@ class minecraft {
   }
   file {'/etc/systemd/system/minecraft.service':
     ensure => file, 
-    source => 'puppet:///modules/minecraft/minecraft.service', 
-    require => Class['minecraft::custom_java']
+    source => 'puppet:///modules/minecraft/minecraft.service',
   }
   service {'minecraft': 
     ensure => running, 
     enable => true,
-    require => File['/etc/systemd/system/minecraft.service']
+    require => [Class['minecraft::custom_java'], File['/opt/minecraft/eula.txt'], File['/etc/systemd/system/minecraft.service']],
   }
 }
