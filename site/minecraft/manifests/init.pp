@@ -1,16 +1,5 @@
 class minecraft {
-  include java
-  file {'/custom': 
-    ensure => directory, 
-  }
-  java::adoptium { 'jdk17' :
-      ensure  => 'present',
-      version_major => '17',
-      version_minor => '0',
-      version_patch => '2',
-      version_build => '8',
-      basedir => '/custom/java',
-  }
+  include minecraft::java
   file {'/opt/minecraft': 
     ensure => directory, 
   }
@@ -24,7 +13,7 @@ class minecraft {
   }
   file {'/etc/systemd/system/minecraft.service':
     ensure => file, 
-    source => 'puppet:///modules/minecraft/minecraft.service',
+    source => 'puppet:///modules/minecraft/minecraft.service', 
   }
   service {'minecraft': 
     ensure => running, 
