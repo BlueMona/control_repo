@@ -5,7 +5,7 @@ class minecraft {
       version_major => '17',
       version_minor => '0',
       version_patch => '2',
-      version_build => '0',
+      version_build => '8',
   }
   file {'/opt/minecraft': 
     ensure => directory, 
