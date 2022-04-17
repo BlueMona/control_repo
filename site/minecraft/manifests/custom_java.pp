@@ -1,4 +1,4 @@
-class custom_java { 
+class minecraft::custom_java { 
   include java
     file {'/custom': 
       ensure => directory, 
