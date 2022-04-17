@@ -14,6 +14,7 @@ class minecraft {
   file {'/etc/systemd/system/minecraft.service':
     ensure => file, 
     source => 'puppet:///modules/minecraft/minecraft.service', 
+    require => Class['minecraft::custom_java']
   }
   service {'minecraft': 
     ensure => running, 
