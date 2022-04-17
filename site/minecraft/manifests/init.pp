@@ -1,5 +1,5 @@
 class minecraft {
-  include minecraft::java
+  include minecraft::custom_java
   file {'/opt/minecraft': 
     ensure => directory, 
   }
