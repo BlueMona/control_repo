@@ -1,7 +1,8 @@
-class minecraft {
-  include minecraft::custom_java
-  $url = 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar'
+class minecraft (
+  $url = 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar',
   $install_dir = '/opt/minecraft'
+){
+  include minecraft::custom_java
   file {$install_dir: 
     ensure => directory, 
   }
