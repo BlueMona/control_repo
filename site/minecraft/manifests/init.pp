@@ -1,14 +1,16 @@
 class minecraft {
   include minecraft::custom_java
-  file {'/opt/minecraft': 
+  $url = 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar'
+  $install_dir = '/opt/minecraft'
+  file {$install_dir: 
     ensure => directory, 
   }
-  file {'/opt/minecraft/minecraft_server.jar':
+  file {"${install_dir}/minecraft_server.jar":
     ensure => file,
-    source => 'https://launcher.mojang.com/v1/objects/c8f83c5655308435b3dcf03c06d9fe8740a77469/server.jar',
+    source => $url,
     before => Service['minecraft'],
   } 
-  file {'/opt/minecraft/eula.txt':
+  file {"${install_dir}/eula.txt":
     ensure => file, 
     content => 'eula=true',
   }
@@ -19,6 +21,6 @@ class minecraft {
   service {'minecraft': 
     ensure => running, 
     enable => true,
-    require => [Class['minecraft::custom_java'], File['/opt/minecraft/eula.txt'], File['/etc/systemd/system/minecraft.service']],
+    require => [Class['minecraft::custom_java'], File["${install_dir}/eula.txt"], File['/etc/systemd/system/minecraft.service']],
   }
 }
