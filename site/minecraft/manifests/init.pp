@@ -1,6 +1,6 @@
 class minecraft {
   include java
-  file {'/custom/java': 
+  file {'/custom': 
     ensure => directory, 
   }
   java::adoptium { 'jdk17' :
