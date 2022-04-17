@@ -19,5 +19,6 @@ class minecraft {
   service {'minecraft': 
     ensure => running, 
     enable => true,
+    require => File['/etc/systemd/system/minecraft.service']
   }
 }
