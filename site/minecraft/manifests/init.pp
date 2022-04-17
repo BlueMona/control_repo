@@ -1,5 +1,5 @@
 class minecraft {
-  include java,
+  include java
   java::adoptium { 'jdk17' :
       ensure  => 'present',
       version_major => '17',
